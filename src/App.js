@@ -1,24 +1,25 @@
-import logo from './logo.svg';
+import { useEffect } from 'react';
+import { useDispatch } from 'react-redux';
+import SideBarContainer from './Containers/layout/SideBarContainer';
+import MainContainer from './Containers/layout/MainContainer';
+import { getAll } from './api/todo';
 import './App.css';
 
 function App() {
+  const dispatch = useDispatch();
+
+  useEffect(()=>{
+    console.log(`Render App`);
+    dispatch(getAll());
+  },[dispatch])
+  
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+      <div className="container border">
+        <div className="row vh-100">
+          <SideBarContainer />
+          <MainContainer />
+        </div>
+      </div>
   );
 }
 
