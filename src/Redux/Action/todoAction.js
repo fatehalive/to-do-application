@@ -40,4 +40,4 @@ export const completeTask = (x) => {
     type: type.TODO_COMPLETE,
     payload: x
   }
-}
+};

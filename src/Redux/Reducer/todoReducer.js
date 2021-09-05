@@ -16,31 +16,31 @@ const todoReducer = (state = init, action) => {
       return action.payload;
 
     case types.TODO_ADD:
-      return [
-        ...state,
-        {
-          id: action.payload.id,
-          title: action.payload.title,
-          description: action.payload.description,
-          status: action.payload.status,
-          createdAt: action.payload.createdAt
-        }
-      ];
+      const a = {
+        id: action.payload.id,
+        title: action.payload.title,
+        description: action.payload.description,
+        status: action.payload.status,
+        createdAt: action.payload.createdAt
+      }
+      // array.concat return immutable
+      return state.concat(a);
 
     case types.TODO_COMPLETE:
-      const indeks = state.findIndex((todo) =>
-        todo.id === action.payload.id
-      )
-      if (state[indeks].status === 0) {
-        state[indeks].status = 1
-      } else if (state[indeks].status === 1) {
-        state[indeks].status = 0
-      }
-      return state;
-    
-      // case types.TODO_UPDATE:
-      //   let newTask;
-      //   newTask = [...state];
+      // const indeks = state.findIndex((todo) =>
+      //   todo.id === action.payload.id
+      // );
+
+      // const x = Object.assign([],state);
+      // if (x[indeks].status === 1) {
+      //   x[indeks].status = 0;
+      // } else if (x[indeks].status === 0) {
+      //   x[indeks].status = 1;
+      // }
+      let copy = [...state];
+      let copyItem = copy.find(item => item.id === action.payload.id);
+      copyItem.status === 0 ? copyItem.status = 1 : copyItem.status = 0;
+      return copy;
 
     default:
       return state;
