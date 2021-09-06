@@ -1,9 +1,10 @@
 import React, { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import Main from './Main';
-import Appbar from './Appbar';
-import ClippedDrawer from './ClippedDrawer';
-import MiniDrawer from './Minidrawer';
+import Header from './Header';
+// import Drawer from './Drawer';
+// import ClippedDrawer from './ClippedDrawer';
+// import MiniDrawer from './Minidrawer';
 // import SideBarContainer from './Containers/layout/SideBarContainer';
 // import MainContainer from './Containers/layout/MainContainer';
 // import { getAll } from './api/todo';
@@ -25,10 +26,9 @@ function App() {
       //   </div>
       // </div>
       <React.Fragment>
-        {/* <Appbar />
-        <Main /> */}
+        <Header />
+        <Main />
         {/* <ClippedDrawer/> */}
-        <MiniDrawer />
       </React.Fragment>
   );
 }
